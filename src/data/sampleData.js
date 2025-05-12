@@ -9,6 +9,7 @@ export const sampleCategories = [
   "Collectibles"
 ];
 
+// Incorporating user data with products
 export const sampleProducts = [
   {
     id: 1,
@@ -22,7 +23,10 @@ export const sampleProducts = [
       id: 101,
       name: "Alex Johnson",
       rating: 4.8,
-      joinDate: "Feb 2023"
+      joinDate: "Feb 2023",
+      profilePicture: "/images/alex.jpg",  // You can update with real profile pictures
+      bio: "Gamer and tech enthusiast",
+      location: "Seattle, WA",
     }
   },
   {
@@ -37,7 +41,10 @@ export const sampleProducts = [
       id: 102,
       name: "Morgan Smith",
       rating: 4.5,
-      joinDate: "Aug 2022"
+      joinDate: "Aug 2022",
+      profilePicture: "/images/morgan.jpg",
+      bio: "Sneaker collector and fashion lover",
+      location: "Portland, OR",
     }
   },
   {
@@ -52,7 +59,10 @@ export const sampleProducts = [
       id: 103,
       name: "Jamie Wilson",
       rating: 4.9,
-      joinDate: "Jan 2023"
+      joinDate: "Jan 2023",
+      profilePicture: "/images/jamie.jpg",
+      bio: "Bookworm and Tolkien fan",
+      location: "Austin, TX",
     }
   },
   {
@@ -67,7 +77,10 @@ export const sampleProducts = [
       id: 104,
       name: "Chris Taylor",
       rating: 4.6,
-      joinDate: "Mar 2022"
+      joinDate: "Mar 2022",
+      profilePicture: "/images/chris.jpg",
+      bio: "Outdoor enthusiast and adventure seeker",
+      location: "Denver, CO",
     }
   },
   {
@@ -82,7 +95,10 @@ export const sampleProducts = [
       id: 105,
       name: "Sam Parker",
       rating: 4.7,
-      joinDate: "Jul 2023"
+      joinDate: "Jul 2023",
+      profilePicture: "/images/sam.jpg",
+      bio: "Music lover and vintage tech collector",
+      location: "Nashville, TN",
     }
   },
   {
@@ -97,7 +113,10 @@ export const sampleProducts = [
       id: 106,
       name: "Jordan Lee",
       rating: 4.8,
-      joinDate: "May 2022"
+      joinDate: "May 2022",
+      profilePicture: "/images/jordan.jpg",
+      bio: "Gaming enthusiast and tech aficionado",
+      location: "Chicago, IL",
     }
   },
   {
@@ -112,7 +131,10 @@ export const sampleProducts = [
       id: 107,
       name: "Taylor Rodriguez",
       rating: 4.9,
-      joinDate: "Dec 2022"
+      joinDate: "Dec 2022",
+      profilePicture: "/images/taylor.jpg",
+      bio: "LEGO enthusiast and Star Wars fan",
+      location: "San Diego, CA",
     }
   },
   {
@@ -127,11 +149,15 @@ export const sampleProducts = [
       id: 108,
       name: "Casey Martinez",
       rating: 4.4,
-      joinDate: "Sep 2023"
+      joinDate: "Sep 2023",
+      profilePicture: "/images/casey.jpg",
+      bio: "Cooking enthusiast and gadget lover",
+      location: "Miami, FL",
     }
   }
 ];
 
+// Incorporating user data with myItems
 export const myItems = [
   {
     id: 101,
@@ -139,7 +165,16 @@ export const myItems = [
     description: "13-inch MacBook Pro with M1 chip. In excellent condition.",
     condition: "Very Good",
     category: "Electronics",
-    imageSrc: "/images/macbook.jpg"
+    imageSrc: "/images/macbook.jpg",
+    owner: {
+      id: 109,
+      name: "Bryant Martinez", // Update with actual user data
+      rating: 5.0,
+      joinDate: "May 2023",
+      profilePicture: "/images/bryant.jpg", // Update with actual user image
+      bio: "Software engineer and tech enthusiast",
+      location: "Fullerton, CA",
+    }
   },
   {
     id: 102,
@@ -147,7 +182,16 @@ export const myItems = [
     description: "Trek mountain bike, 2 years old but well maintained.",
     condition: "Good",
     category: "Sports & Outdoors",
-    imageSrc: "/images/bike.jpg"
+    imageSrc: "/images/bike.jpg",
+    owner: {
+      id: 109,
+      name: "Bryant Martinez", // Same owner as above
+      rating: 5.0,
+      joinDate: "May 2023",
+      profilePicture: "/images/bryant.jpg",
+      bio: "Outdoor enthusiast and cyclist",
+      location: "Fullerton, CA",
+    }
   },
   {
     id: 103,
@@ -155,6 +199,15 @@ export const myItems = [
     description: "Genuine leather jacket, size L, barely worn.",
     condition: "Like New",
     category: "Clothing",
-    imageSrc: "/images/jacket.jpg"
+    imageSrc: "/images/jacket.jpg",
+    owner: {
+      id: 109,
+      name: "Bryant Martinez", // Same owner as above
+      rating: 5.0,
+      joinDate: "May 2023",
+      profilePicture: "/images/bryant.jpg",
+      bio: "Fashion enthusiast",
+      location: "Fullerton, CA",
+    }
   }
 ];
