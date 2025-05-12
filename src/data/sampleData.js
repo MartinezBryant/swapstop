@@ -165,7 +165,7 @@ export const myItems = [
     description: "13-inch MacBook Pro with M1 chip. In excellent condition.",
     condition: "Very Good",
     category: "Electronics",
-    imageSrc: "/images/macbook.jpg",
+    imageSrc: "/images/hero.jpg",
     owner: {
       id: 109,
       name: "Bryant Martinez", // Update with actual user data
@@ -182,7 +182,7 @@ export const myItems = [
     description: "Trek mountain bike, 2 years old but well maintained.",
     condition: "Good",
     category: "Sports & Outdoors",
-    imageSrc: "/images/bike.jpg",
+    imageSrc: "/images/item2.jpg",
     owner: {
       id: 109,
       name: "Bryant Martinez", // Same owner as above
@@ -199,7 +199,7 @@ export const myItems = [
     description: "Genuine leather jacket, size L, barely worn.",
     condition: "Like New",
     category: "Clothing",
-    imageSrc: "/images/jacket.jpg",
+    imageSrc: "/images/item1.jpg",
     owner: {
       id: 109,
       name: "Bryant Martinez", // Same owner as above

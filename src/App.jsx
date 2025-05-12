@@ -21,37 +21,19 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentPage, setCurrentPage] = useState('home');
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [selectedUser, setSelectedUser] = useState({
-    name: '',
-    rating: 0,
-    bio: '',
-    profilePicture: '',
-    listedItems: [],
-    soldItems: []
-  });
+  const [selectedProfile, setSelectedProfile] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [showTradeModal, setShowTradeModal] = useState(false);
-  const [currentUser, setCurrentUser] = useState(null);
-
-  // Check for existing login session on component mount
-  useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      setCurrentUser(JSON.parse(storedUser));
-      setIsLoggedIn(true);
-    }
-  }, []);
 
   useEffect(() => {
-    // Filter products based on category and search query
     let filteredProducts = [...sampleProducts];
-    
+
     if (selectedCategory !== "All") {
       filteredProducts = filteredProducts.filter(product => 
         product.category === selectedCategory
       );
     }
-    
+
     if (searchQuery) {
       const query = searchQuery.toLowerCase();
       filteredProducts = filteredProducts.filter(product => 
@@ -60,7 +42,7 @@ function App() {
         product.category.toLowerCase().includes(query)
       );
     }
-    
+
     setProducts(filteredProducts);
   }, [selectedCategory, searchQuery]);
 
@@ -70,48 +52,12 @@ function App() {
   };
 
   const viewProfile = (user) => {
-    setSelectedUser(user);
+    setSelectedProfile(user);
     setCurrentPage('profile');
   };
 
-  // Handle successful login
-  const handleLogin = (userData) => {
-    setCurrentUser(userData);
-    setIsLoggedIn(true);
-    setShowLoginModal(false);
-    
-    // Store user data in localStorage for persistence
-    localStorage.setItem('user', JSON.stringify(userData));
-    
-    // Optional: Show success message
-    alert("Login successful!");
-  };
-
-  // Handle successful registration
-  const handleSignup = (userData) => {
-    setCurrentUser(userData);
-    setIsLoggedIn(true);
-    setShowSignupModal(false);
-    
-    // Store user data in localStorage for persistence
-    localStorage.setItem('user', JSON.stringify(userData));
-    
-    // Optional: Show success message
-    alert("Registration successful!");
-  };
-
-  // Handle logout
-  const handleLogout = () => {
-    setCurrentUser(null);
-    setIsLoggedIn(false);
-    
-    // Remove user data from localStorage
-    localStorage.removeItem('user');
-    
-    // Redirect to home page if on profile page
-    if (currentPage === 'profile') {
-      setCurrentPage('home');
-    }
+  const handleSearch = (e) => {
+    e.preventDefault();
   };
 
   return (
@@ -121,13 +67,13 @@ function App() {
         setShowSignupModal={setShowSignupModal}
         setShowListingModal={setShowListingModal}
         isLoggedIn={isLoggedIn}
-        onLogout={handleLogout}  // Add logout handler
-        currentUser={currentUser} // Pass current user data
+        setIsLoggedIn={setIsLoggedIn}
         setCurrentPage={setCurrentPage}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
+        handleSearch={handleSearch}
       />
-      
+
       {currentPage === 'home' && (
         <main>
           <Hero />
@@ -149,52 +95,46 @@ function App() {
             product={selectedProduct} 
             setShowTradeModal={setShowTradeModal}
             isLoggedIn={isLoggedIn}
-            currentUser={currentUser} // Pass current user data
             setShowLoginModal={setShowLoginModal}
-            setSelectedUser={setSelectedUser}
-            setCurrentPage={setCurrentPage}
+            viewProfile={viewProfile}
           />
         </main>
       )}
 
-      {currentPage === 'profile' && selectedUser.name && (
+      {currentPage === 'profile' && selectedProfile && (
         <main className="container mt-4">
-          <ProfilePage 
-            user={selectedUser}
-            viewProduct={viewProduct} // Pass viewProduct to allow profile to navigate to products
-            isCurrentUser={currentUser && currentUser.id === selectedUser.id} // Check if viewing own profile
-          />
+          <ProfilePage user={selectedProfile} />
         </main>
       )}
-      
+
       <Footer />
-      
+
       {showLoginModal && (
         <LoginModal 
-          onClose={() => setShowLoginModal(false)}
-          onLogin={handleLogin} // Pass login handler
+          onClose={() => setShowLoginModal(false)} 
+          setIsLoggedIn={setIsLoggedIn}
+          setShowSignupModal={setShowSignupModal}
+          setShowLoginModal={setShowLoginModal}
         />
       )}
-      
+
       {showSignupModal && (
         <SignupModal 
-          onClose={() => setShowSignupModal(false)} 
-          onSignup={handleSignup} // Pass signup handler
+          onClose={() => setShowSignupModal(false)}
+          setShowLoginModal={setShowLoginModal}
+          setShowSignupModal={setShowSignupModal}
         />
       )}
-      
+
       {showListingModal && (
-        <ListingModal 
-          onClose={() => setShowListingModal(false)}
-          currentUser={currentUser} // Pass current user data
-        />
+        <ListingModal onClose={() => setShowListingModal(false)} />
       )}
-      
+
       {showTradeModal && selectedProduct && (
         <TradeModal 
           onClose={() => setShowTradeModal(false)} 
           product={selectedProduct}
-          currentUser={currentUser} // Pass current user data 
+          myItems={myItems}
         />
       )}
     </>

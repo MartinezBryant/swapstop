@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+// Fallback image for missing or invalid imageSrc
+const fallbackImage = 'https://via.placeholder.com/150';
+
 function TradeModal({ onClose, product, myItems }) {
   const [selectedItem, setSelectedItem] = useState(null);
   const [message, setMessage] = useState('');
@@ -19,8 +22,12 @@ function TradeModal({ onClose, product, myItems }) {
     alert('Trade request sent successfully!');
   };
 
+  const getImageSrc = (src) => {
+    return src ? src : fallbackImage; // Return fallback if no imageSrc is provided
+  };
+
   return (
-    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-gradient-to-r from-[#567257] to-[#383515] flex items-center justify-center z-50">
       <div className="bg-white rounded-lg w-full max-w-2xl p-6 relative max-h-screen overflow-y-auto">
         <button 
           className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
@@ -42,13 +49,11 @@ function TradeModal({ onClose, product, myItems }) {
             <h3 className="text-lg font-semibold mb-3">You want:</h3>
             <div className="border rounded-lg p-4 flex items-center">
               <div className="w-20 h-20 bg-gray-200 rounded mr-4">
-                {product.imageSrc && (
-                  <img 
-                    src={product.imageSrc} 
-                    alt={product.title} 
-                    className="w-full h-full object-cover rounded"
-                  />
-                )}
+                <img 
+                  src={getImageSrc(product.imageSrc)} 
+                  alt={product.title} 
+                  className="w-full h-full object-cover rounded"
+                />
               </div>
               <div>
                 <h4 className="font-medium">{product.title}</h4>
@@ -71,13 +76,11 @@ function TradeModal({ onClose, product, myItems }) {
                     onClick={() => setSelectedItem(item.id)}
                   >
                     <div className="w-16 h-16 bg-gray-200 rounded mr-3">
-                      {item.imageSrc && (
-                        <img 
-                          src={item.imageSrc} 
-                          alt={item.title} 
-                          className="w-full h-full object-cover rounded"
-                        />
-                      )}
+                      <img 
+                        src={getImageSrc(item.imageSrc)} 
+                        alt={item.title} 
+                        className="w-full h-full object-cover rounded"
+                      />
                     </div>
                     <div>
                       <h4 className="font-medium text-sm">{item.title}</h4>
