@@ -23,7 +23,7 @@ function ProductGrid({ products, viewProduct }) {
                   <span>{product.title} Image</span>
                 )}
               </div>
-              <div className="absolute top-2 right-2 bg-blue-600 text-white text-xs font-semibold px-2 py-1 rounded">
+              <div className="absolute top-2 right-2 bg-[#567257] text-white text-xs font-semibold px-2 py-1 rounded">
                 {product.condition}
               </div>
             </div>

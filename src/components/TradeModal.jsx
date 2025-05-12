@@ -112,14 +112,14 @@ function TradeModal({ onClose, product, myItems }) {
         </div>
         
         <div className="mb-6">
-          <label htmlFor="message" className="block text-gray-700 font-medium mb-2">
+          <label htmlFor="message" className="block text-gray-500 font-medium mb-2">
             Message (Optional)
           </label>
           <textarea
             id="message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 h-24"
+            className="w-full px-3 py-2 border border-gray-300 text-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 h-24"
             placeholder="Introduce yourself and explain why you're interested in swapping for this item..."
           ></textarea>
         </div>
@@ -135,7 +135,7 @@ function TradeModal({ onClose, product, myItems }) {
           <button
             type="button"
             onClick={handleSubmit}
-            className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+            className="px-6 py-2 bg-[#5d5823] text-white rounded-md hover:bg-[#383515]"
           >
             Send Swap Request
           </button>

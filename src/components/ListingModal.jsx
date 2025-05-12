@@ -159,7 +159,7 @@ function ListingModal({ onClose }) {
             </button>
             <button
               type="submit"
-              className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+              className="px-6 py-2 bg-[#5d5823] text-white rounded-md hover:bg-[#383515]"
             >
               Create Listing
             </button>

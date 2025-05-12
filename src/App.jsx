@@ -103,7 +103,7 @@ function App() {
 
       {currentPage === 'profile' && selectedProfile && (
         <main className="container mt-4">
-          <ProfilePage user={selectedProfile} />
+          <ProfilePage user={selectedProfile} isLoggedIn={isLoggedIn} setShowLoginModal={setShowLoginModal} />
         </main>
       )}
 

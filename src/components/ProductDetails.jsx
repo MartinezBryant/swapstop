@@ -1,17 +1,12 @@
 import React from 'react';
 
-function ProductDetail({ product, setShowTradeModal, isLoggedIn, setShowLoginModal, setSelectedUser, setCurrentPage }) {
+function ProductDetail({ product, setShowTradeModal, isLoggedIn, setShowLoginModal, viewProfile }) {
   const handleTradeRequest = () => {
     if (isLoggedIn) {
       setShowTradeModal(true);
     } else {
       setShowLoginModal(true);
     }
-  };
-
-  const handleProfileNavigation = () => {
-    setSelectedUser(product.owner);
-    setCurrentPage('profile');
   };
 
   return (
@@ -36,7 +31,7 @@ function ProductDetail({ product, setShowTradeModal, isLoggedIn, setShowLoginMod
         <div className="md:w-1/2 p-6">
           <div className="flex justify-between items-start">
             <h2 className="text-2xl font-bold mb-2">{product.title}</h2>
-            <span className="bg-blue-600 text-white text-sm font-semibold px-3 py-1 rounded">
+            <span className="bg-[#567257] text-white text-sm font-semibold px-3 py-1 rounded">
               {product.condition}
             </span>
           </div>
@@ -62,7 +57,7 @@ function ProductDetail({ product, setShowTradeModal, isLoggedIn, setShowLoginMod
               <div>
                 <p 
                   className="font-medium text-blue-600 cursor-pointer hover:underline"
-                  onClick={handleProfileNavigation}
+                  onClick={() => viewProfile(product.owner)}
                 >
                   {product.owner.name}
                 </p>
